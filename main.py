@@ -177,7 +177,7 @@ while not game_finished:
                 powers_list.remove(power)  # Remove after point gain
 
     if not enemies.all_enemies:
-        if score.levels < 4:
+        if score.levels <= 3:
             score.level_up()
             if score.levels == 1:
                 bricks.place_bricks(brick_rows=2, bricks_columns=8, bricks_colors=bricks_colors)
@@ -185,16 +185,14 @@ while not game_finished:
                     enemies.respawn_enemy(space_ships)
             elif score.levels == 2:
                 bricks.place_bricks(brick_rows=1, bricks_columns=8, bricks_colors=bricks_colors)
-                enemies.increase_laser_amount()
+                enemies.increase_laser_amount(7)
                 for i in range(16):
                     enemies.respawn_enemy(space_ships)
             elif score.levels == 3:
-                enemies.increase_laser_amount()
+                enemies.increase_laser_amount(10)
                 for i in range(20):
                     enemies.respawn_enemy(space_ships)
 
-    # if len(enemies.all_enemies) <= 2 and score.levels == 1:
-    #     enemies.laser_amount = 2
 
     if enemies.all_enemies:
         if len(enemies.all_enemies) < 2:
@@ -204,9 +202,8 @@ while not game_finished:
             else:
                 if randint(1,20) == 5:
                     enemies.enemy_shoot_laser(laser_shape=lasers_type[1])
-        else:
-            if choice([False, False, False, True]):
-                enemies.enemy_shoot_laser(laser_shape=lasers_type[1])
+        elif choice([False, False, True]):
+            enemies.enemy_shoot_laser(laser_shape=lasers_type[1])
 
 
     if not enemies.all_enemies and score.levels >= 3:

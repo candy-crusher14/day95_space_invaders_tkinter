@@ -43,15 +43,8 @@ class EnemySpaceShips:
 
 
 
-            # shooter = choice(self.all_enemies)['enemy']  # Choose a random enemy to shoot
-            # shoot_laser = Turtle()
-            # shoot_laser.penup()
-            # shoot_laser.shape(f'{laser_shape}')
-            # shoot_laser.goto(x=shooter.xcor(), y=shooter.ycor())
-            # self.lasers.append(shoot_laser)
-
-    def increase_laser_amount(self):
-        self.laser_amount += 2
+    def increase_laser_amount(self, amount):
+        self.laser_amount += amount
 
     # def make_enemies(self, enemy_types):
     #     rows = 3
